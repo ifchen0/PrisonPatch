@@ -3,6 +3,7 @@
   <name>Prison Patch</name>
   <author>ifchen0</author>
   <packageId>ifchen0.prisonpatch</packageId>
+  <url>https://github.com/ifchen0/PrisonPatch</url>
   <supportedVersions><li>1.6</li></supportedVersions>
   <description>Small fixes for vanilla prisoner handling.
 
