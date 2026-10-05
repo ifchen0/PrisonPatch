@@ -1,0 +1,12 @@
+Small fixes for vanilla prisoner handling. More fixes may be added over time.
+
+[h2]Wardens respect food policy during mental breaks[/h2][b]Cause:[/b] Vanilla [i]Pawn_FoodRestrictionTracker.GetCurrentRespectedRestriction[/i] returns no policy whenever the eater is in a mental state, no matter who is fetching the food. That makes sense for a breaking pawn feeding itself, but it also means a warden delivering food to a prisoner in a mental break ignores the prisoner's food policy and may bring fine meals, ambrosia or anything else you restricted.
+
+[b]Fix:[/b] A Harmony postfix keeps the food policy when the food is fetched by another pawn (warden deliveries, feeding a patient). A pawn in a mental break that feeds itself still ignores its policy, as in vanilla.
+
+[h2]Notes[/h2][list]
+[*]Safe to add to or remove from an existing save.
+[*]Load after Harmony.
+[/list]
+[hr][/hr]
+This mod was developed with the help of AI coding tools (Claude Code). Full source code is included in the Source folder for review.
