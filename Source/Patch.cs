@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace PrisonPatch
 {
@@ -32,6 +35,29 @@ namespace PrisonPatch
             if (pawn.Faction != Faction.OfPlayer && getter.Faction != Faction.OfPlayer)
                 return;
             __result = __instance.CurrentFoodPolicy;
+        }
+    }
+
+    /// <summary>
+    /// Freshly captured prisoners are often both hungry and bleeding. Warden feeding can be picked before doctor
+    /// tending, letting the prisoner bleed out while being spoon-fed. Skip non-forced feeding while the prisoner is
+    /// still bleeding so the pawn moves on to other work such as tending; bleeding kills far faster than hunger.
+    /// </summary>
+    [HarmonyPatch]
+    public static class Patch_WardenFeed_SkipWhileBleeding
+    {
+        public static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(typeof(WorkGiver_Warden_Feed), nameof(WorkGiver_Warden_Feed.JobOnThing));
+            yield return AccessTools.Method(typeof(WorkGiver_Warden_DeliverFood), nameof(WorkGiver_Warden_DeliverFood.JobOnThing));
+        }
+
+        public static bool Prefix(Thing t, bool forced, ref Job __result)
+        {
+            if (forced || !(t is Pawn prisoner) || prisoner.health.hediffSet.BleedRateTotal <= 0f)
+                return true;
+            __result = null;
+            return false;
         }
     }
 }

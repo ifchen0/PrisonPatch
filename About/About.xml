@@ -9,6 +9,9 @@
 Wardens respect food policy during mental breaks:
 Vanilla ignores a pawn's food policy whenever that pawn is in a mental state, even when someone else is bringing the food. As a result, a warden may deliver restricted food (fine meals, ambrosia, and so on) to a prisoner who is having a mental break. With this mod, the food policy still applies when another pawn fetches the food. A pawn in a mental break that feeds itself behaves as in vanilla.
 
+Tend bleeding prisoners before feeding them:
+Freshly captured prisoners are often both hungry and bleeding, and a warden may spend time feeding them while they bleed out. Wardens now skip feeding and food delivery while the prisoner is still bleeding, so they can move on to other work such as tending. You can still order feeding manually.
+
 Notes:
 - Safe to add to or remove from an existing save.
 - Load after Harmony.

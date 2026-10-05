@@ -4,6 +4,10 @@ Small fixes for vanilla prisoner handling. More fixes may be added over time.
 
 [b]Fix:[/b] A Harmony postfix keeps the food policy when the food is fetched by another pawn (warden deliveries, feeding a patient). A pawn in a mental break that feeds itself still ignores its policy, as in vanilla.
 
+[h2]Tend bleeding prisoners before feeding them[/h2][b]Cause:[/b] Freshly captured prisoners are usually both hungry and bleeding. Warden feeding ([i]WorkGiver_Warden_Feed[/i]) can be picked before doctor tending, so a warden may spend time spoon-feeding a prisoner who is bleeding out.
+
+[b]Fix:[/b] Wardens skip automatic feeding and food delivery while the prisoner is still bleeding, so they can move on to other work such as tending. Once the wounds are tended, feeding resumes as normal. Manual (right-click) feeding orders still work.
+
 [h2]Notes[/h2][list]
 [*]Safe to add to or remove from an existing save.
 [*]Load after Harmony.
