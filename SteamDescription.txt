@@ -1,3 +1,5 @@
+[h2]Now part of Vanilla Tune-Up[/h2]This mod has been merged into [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3815774199]Vanilla Tune-Up: Fixes & Tweaks[/url] as the [b]Food policy during mental breaks[/b] and [b]Tend bleeding prisoners first[/b] fixes (now separate toggles), and will not be updated further. You can switch at any time: while this mod is active, those parts of Vanilla Tune-Up are skipped, so nothing is applied twice.
+[hr][/hr]
 Small fixes for vanilla prisoner handling. More fixes may be added over time.
 
 [h2]Wardens respect food policy during mental breaks[/h2][b]Cause:[/b] Vanilla [i]Pawn_FoodRestrictionTracker.GetCurrentRespectedRestriction[/i] returns no policy whenever the eater is in a mental state, no matter who is fetching the food. That makes sense for a breaking pawn feeding itself, but it also means a warden delivering food to a prisoner in a mental break ignores the prisoner's food policy and may bring fine meals, ambrosia or anything else you restricted.
